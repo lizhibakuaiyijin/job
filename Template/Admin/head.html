@@ -1,0 +1,33 @@
+<header>
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav" style="width: 100%">
+                    <li>
+                        <a><span>{$_SESSION['admin_name']}</span>，欢迎登录！</a>
+                    </li>
+                    <li class="post_list">
+                        <a href="{:U('Post/post_list')}">职位列表</a>
+                    </li>
+                    <li class="post_add">
+                        <a href="{:U('Post/post_add')}">发布职位</a>
+                    </li>
+                    <li class="user_list">
+                        <a href="{:U('User/user_list')}">用户列表</a>
+                    </li>
+                    <li class="logout" style="float: right;">
+                        <a href="#" onclick="logout()">退出登录</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <script type="text/javascript">
+    function logout() {
+        var log = confirm('确认退出？');
+        if (log) {
+            window.location.href = "{:U('Login/logout')}";
+        }
+    }
+    </script>
+</header>

@@ -1,0 +1,251 @@
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>兼职</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta content="telephone=no" name="format-detection" />
+    <meta content="email=no" name="format-detection" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="stylesheet" href="/stu_job/Public/css/light7.min.css">
+    <link rel="stylesheet" href="/stu_job/Public/css/light7-swiper.min.css">
+    <style>
+        .page {
+            background: #fff
+        }
+        .color-gray.notice{
+            color: red;
+            font-size: .7rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page" id="page">
+        <header class="bar bar-nav">
+            <a href="index.html" class="pull-left open-panel icon"><span class="icon icon-home"></span></a>
+            <h1 class="title">注册</h1>
+        </header>
+        <div class="content" id="app">
+            <validator name="validation" :groups="['passwordGroup']">
+            <form novalidate method="post" action="/stu_job/Public/register.html">
+            <div class="list-block">
+                <ul>
+                    <!-- Text inputs -->
+                    <!--<li>-->
+                        <!--<div class="item-content">-->
+                            <!--<div class="color-gray notice">用户名</div>-->
+                        <!--</div>-->
+                    <!--</li>-->
+                    <li>
+                        <div class="item-content">
+                            <div class="item-media"><i class="icon icon-form-name"></i></div>
+                            <div class="item-inner">
+                                <div class="item-title label">用户名</div>
+                                <div class="item-input">
+                                    <input type="text" name="username" id="username" placeholder="用户名" v-validate:username="['required']">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <!--<li>-->
+                        <!--<div class="item-content">-->
+                            <!--<div class="color-gray notice">请填写真实姓名</div>-->
+                        <!--</div>-->
+                    <!--</li>-->
+                    <li>
+                        <div class="item-content">
+                             <div class="item-media"><i class="icon icon-form-name"></i></div>
+                            <div class="item-inner">
+                                <div class="item-title label">真实姓名</div>
+                                <div class="item-input">
+                                    <input type="text" name="realname" placeholder="真实姓名" v-validate:relname="['required']">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-content">
+                             <div class="item-media"><i class="icon icon-form-password"></i></div>
+                            <div class="item-inner">
+                                <div class="item-title label">密码</div>
+                                <div class="item-input">
+                                    <input type="password" name="password" placeholder="密码" class=""
+                                           v-validate:password="{ minlength: 6, required: true }"
+                                           group="passwordGroup"
+
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <!--<li>-->
+                        <!--<div class="item-content">-->
+                             <!--<div class="item-media"><i class="icon icon-form-password"></i></div>-->
+                            <!--<div class="item-inner">-->
+                                <!--<div class="item-title label">确认密码</div>-->
+                                <!--<div class="item-input">-->
+                                    <!--<input type="password" placeholder="确认密码" class=""-->
+                                           <!--v-validate:password-comfirm="{minlength: 6, required: true}"-->
+                                           <!--group="passwordGroup"-->
+                                           <!--@valid="onValid"-->
+                                    <!--/>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<div class="errors item-content">-->
+                            <!--<p class="color-gray notice" v-if="$validation.passwordGroup.valid">密码不一致</p>-->
+                        <!--</div>-->
+                    <!--</li>-->
+                    <li>
+                        <div class="item-content">
+                            <div class="item-media"><i class="icon icon-form-tel"></i></div>
+                            <div class="item-inner">
+                                <div class="item-title label">手机号</div>
+                                <div class="item-input">
+                                    <input type="number" id="phone" name="phone" placeholder="请输入手机号" class=""
+                                           v-validate:tel="{
+                                            minlength: 11,
+                                            maxlength: 11,
+                                            required: true,
+                                            }"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-content">
+                             <div class="item-media"><i class="icon icon-form-gender"></i></div>
+                            <div class="item-inner">
+                                <div class="item-title label">性别</div>
+                                <div class="item-input">
+                                    <select name="sex">
+                                      <option value="1">男</option>
+                                      <option value="2">女</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <!-- Date -->
+                    <li>
+                        <div class="item-content">
+                             <div class="item-media"><i class="icon icon-form-calendar"></i></div>
+                            <div class="item-inner">
+                                <div class="item-title label">入学时间</div>
+                                <div class="item-input">
+                                    <input type="date" name="admission_date" placeholder="入学时间" value="<?php echo date('Y-m-d',time());?>">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-content">
+                             <div class="item-media"><i class="icon icon-form-settings"></i></div>
+                            <div class="item-inner">
+                                <div class="item-title label">学校</div>
+                                <div class="item-input">
+                                    <input type="text" name="school" placeholder="学校" v-validate:school="['required']">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-content">
+                             <div class="item-media"><i class="icon icon-form-settings"></i></div>
+                            <div class="item-inner">
+                                <div class="item-title label">学院</div>
+                                <div class="item-input">
+                                    <input type="text" name="college" placeholder="学院" v-validate:college="['required']">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-content">
+                             <div class="item-media"><i class="icon icon-form-settings"></i></div>
+                            <div class="item-inner">
+                                <div class="item-title label">专业</div>
+                                <div class="item-input">
+                                    <input type="text" name="major" placeholder="专业" v-validate:major="['required']">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="content-block">
+                <div class="row">
+                    <div class="col-100">
+                        <button
+                                type="submit"
+                                style="width: 100%;"
+                                class="button button-big button-fill button-success"
+                                v-if="$validation.valid"                               
+                      >注册</button>
+                        <input type="hidden" name="salt" value="<?php echo ($salt); ?>">
+                        <button
+                                type="button"
+                                style="width: 100%;"
+                                class="button button-big button-fill button-danger"
+                                v-if="!($validation.valid)"
+                        >请确认信息填写正确(完整)</button>
+                    </div>
+                </div>
+            </div>
+            </form>
+            </validator>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="/stu_job/Public/js/jquery-3.2.1.min.js"></script>
+<script type='text/javascript' src='/stu_job/Public/js/light7.min.js' charset='utf-8'></script>
+<script type='text/javascript' src='/stu_job/Public/js/light7-swiper.min.js' charset='utf-8'></script>
+<script type="text/javascript" src="/stu_job/Public/js/vue.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="/stu_job/Public/js/vue-validator.js" charset="utf-8"></script>
+<script type="text/javascript">
+    Vue.component("custom-error",{
+        props:['field','message'],
+        //这里的属性可以使用filed,validator,message
+        template:"<p>{{field}}报错信息:<span style='color:red;'>{{message}}</span></p>"
+    })
+    new Vue({
+        el:"#app",
+        methods:{
+//            onValid:function(){
+//                console.log("valid事件触发了");
+//            }
+        }
+
+    })
+    //检查注册用户名是否已存在
+    $("#username").blur(function(){
+	   var username=$.trim($("#username").val());
+	   var url="<?php echo U('Public/check_user');?>";
+	   $.post(url,{"username":username},function(result){
+		  if(result.code == 40001){
+			  alert(result.msg);
+			  $("#username").val('');
+		  } 
+	   });
+    });
+   //检查注册手机号是否已存在
+    $("#phone").blur(function(){
+ 	   var phone=$.trim($("#phone").val());
+ 	   var url="<?php echo U('Public/check_phone');?>";
+ 	   $.post(url,{"phone":phone},function(result){
+ 		  if(result.code == 40001){
+ 			  alert(result.msg);
+ 			 $("#phone").val('');
+ 		  } 
+ 	   });
+    });
+</script>
+
+</html>
